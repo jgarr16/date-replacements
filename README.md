@@ -44,7 +44,35 @@ The whole process takes about 2 minutes. Your other text replacements are not to
 
 ---
 
-## Setup Instructions
+## Quick Setup
+
+Clone the repo, `cd` into it, and run the installer:
+
+```bash
+git clone https://github.com/jrgarrigues/date-replacements.git
+cd date-replacements
+bash install.sh
+```
+
+The installer walks you through everything: copies scripts, prompts for your Keychain password, installs the scheduler, and pauses for you to create the required macOS Shortcut. Follow the on-screen prompts.
+
+After the installer finishes, test it:
+
+```bash
+launchctl start com.jgdate.update
+```
+
+Wait about 3 minutes (the screen will lock and unlock — this is normal), then check the log:
+
+```bash
+tail -15 ~/Library/Logs/date_replacements.log
+```
+
+You should see lines ending with `SUCCESS` and the correct dates.
+
+---
+
+## Manual Setup (if you prefer not to use the installer)
 
 > **Important:** Run all commands in Terminal (or iTerm). Run them from the directory where you cloned this repo.
 
@@ -132,6 +160,7 @@ You should see lines ending with `SUCCESS` and the correct dates. If you see an 
 | `update_date_replacements.applescript` | The main automation. Opens System Settings, navigates to Text Replacement, finds or creates each entry, types the new date. |
 | `run_date_replacements.sh` | Wrapper that runs before the AppleScript. Wakes display, unlocks screen, calls the Shortcut, logs results, tracks whether it already ran today. |
 | `com.jgdate.update.plist` | Tells macOS to run the wrapper every 3600 seconds (1 hour). Loads automatically on login. |
+| `install.sh` | One-command installer. Copies files, sets up Keychain, installs scheduler, walks you through Shortcut creation. |
 | `README.md` | This file. |
 
 ### Files created at runtime (not in this repo)
