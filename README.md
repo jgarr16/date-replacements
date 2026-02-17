@@ -49,7 +49,7 @@ The whole process takes about 2 minutes. Your other text replacements are not to
 Clone the repo, `cd` into it, and run the installer:
 
 ```bash
-git clone https://github.com/jrgarrigues/date-replacements.git
+git clone https://github.com/jgarr16/date-replacements.git
 cd date-replacements
 bash install.sh
 ```
